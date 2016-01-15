@@ -1,7 +1,5 @@
 module.exports = {
 
-	"database": "mongodb://localhost:27017/student",
+	"database": "mongodb://root:abc123@ds047065.mongolab.com:47065/student",
 	"port": process.env.PORT || 3000,
-	"secretKey": "YourSecretKey"
-
 }
