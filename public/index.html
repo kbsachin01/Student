@@ -1,0 +1,142 @@
+<!doctype html>
+
+<!-- ASSIGN OUR ANGULAR MODULE -->
+<html ng-app="student">
+<head>
+    <!-- META -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Optimize mobile viewport -->
+
+    <title>Node/Angular Student</title>
+
+        
+    <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <style>
+
+    </style>
+
+    <!-- SPELLS -->
+    
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script><!-- load jquery -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script><!-- load angular -->
+    <script src="main.js"></script>
+    <script src="js/jquery.validate.js"></script>
+
+</head>
+<!-- SET THE CONTROLLER AND GET ALL TODOS -->
+<body ng-controller="StudentController">
+    <div class="container">
+    	<h2 align="center">A SIMPLE WEB APPLICATION </h2>
+
+    	<div class="container">
+		<p>This is a simple web application built using MEAN stack where in student details can be entered and all the student details can be retrieved back.</p>
+		<br>
+		<button type="button" class="btn btn-primary" ng-click="buttonClicked('form')">Click here to enter Student details </button>
+		<br><br>
+		<button type="button" class="btn btn-primary" ng-click="buttonClicked('database')">Click here to display Student details </button>
+		</div>
+
+		<br><br>
+
+	    <div class="studentForm" ng-show="showStudentForm">
+	    	
+	    	<h4 align="CENTER">Enter the Student information below </h4><br>
+	    	<form class = "form-horizontal" name="form" id="commentForm">
+	    	 <div class="form-group">
+    			<label class="col-sm-4 control-label">Name : </label>
+			    <div class="col-sm-4">
+			      <input type="text" class="form-control" placeholder="Student Name" ng-model="studentDetails.name">
+			    </div>
+			 </div>
+			 <div class="form-group">
+    			<label class="col-sm-4 control-label">University Seat Number : </label>
+			    <div class="col-sm-4">
+			      <input type="text" class="form-control" placeholder="USN" ng-model="studentDetails.usn">
+			    </div>
+			 </div>
+			 
+
+			 <div class="form-group">
+    			<label class="col-sm-4 control-label">Course : </label>
+			    <div class="col-sm-4">
+			      <input type="text" class="form-control" placeholder="Course" ng-model="studentDetails.course">
+			    </div>
+			 </div>
+			 
+			 <div class="form-group">
+    			<label class="col-sm-4 control-label">Branch : </label>
+			    <div class="col-sm-4">
+			      <input type="text" class="form-control" placeholder="Branch" ng-model="studentDetails.branch">
+			    </div>
+			 </div>
+
+			 <div class="form-group">
+    			<label class="col-sm-4 control-label" for="cemail">Email : </label>
+			    <div class="col-sm-4">
+			      <input type="email" id="cemail" class="form-control" placeholder="Email" name="uEmail" ng-model="studentDetails.email" required>
+			    </div>
+			    <div ng-show="form.$submitted || form.uEmail.$touched">
+			      <span ng-show="form.uEmail.$error.required">Tell us your email.</span>
+			      <span ng-show="form.uEmail.$error.email">This is not a valid email.</span>
+			    </div>
+			 </div>
+
+			 <div class="form-group">
+    			<label class="col-sm-4 control-label">Phone :</label>
+			    <div class="col-sm-4">
+			      <input type="text" class="form-control" placeholder="Phone" ng-model="studentDetails.phone">
+			    </div>
+			 </div>
+			 <div class="col-sm-5">
+			 </div>
+	    	 
+	    	 <button type="submit" class="btn btn-default  active" ng-click="sendDetails()">Submit</button>
+	    	
+	    	</form>
+	    	<br>
+	    	<div class="alert alert-success" role="alert" ng-show="successMessage">
+			  <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>			  
+			  <h5>{{successMsg}}</h5>
+			</div>
+	    	
+	    	<div class="alert alert-danger" role="alert" ng-show="errorMessage">
+			  <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+			  
+			  <h5><span class="sr-only">Error:</span>{{errorMsg}}</h5>
+			</div>
+				
+	    </div>
+
+		<div class="studentData" ng-show="showStudentDatabse">
+	        
+
+	        <h3 align="CENTER">Student Details</h3><br>
+	        <table class="table table-striped">
+	        <thead>
+	        <th>Name</th>
+	        <th>Usn</th>
+	        <th>Course</th>
+	        <th>Branch</th>
+	        <th>Email</th>
+	        <th>Phone</th>
+	        </thead>
+	        <tbody>
+	        <tr ng-repeat="studentData in studentsData">
+	        	<td>{{studentData.name}}</td>
+	        	<td>{{studentData.usn}}</td>
+	        	<td>{{studentData.course}}</td>
+	        	<td>{{studentData.branch}}</td>
+	        	<td>{{studentData.email}}</td>
+	        	<td>{{studentData.phone}}</td>
+	        </tr>
+	        </tbody>
+	        	
+	        </table>
+	    </div>
+	</div>
+	
+
+</body>
+</html>

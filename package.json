@@ -1,0 +1,18 @@
+{
+  "name": "student",
+  "version": "1.0.0",
+  "description": "collect and display student details",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Sachin KB",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.14.2",
+    "express": "^4.13.3",
+    "mongoose": "^4.3.5",
+    "morgan": "^1.6.1",
+    "socket.io": "^1.4.1"
+  }
+}
